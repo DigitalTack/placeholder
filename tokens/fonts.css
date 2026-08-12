@@ -1,0 +1,7 @@
+/* Placeholder webfonts.
+   SUBSTITUTION NOTE: no font binaries were supplied with the brand assets.
+   The logo lockup is set in a geometric humanist sans; the closest Google Fonts
+   match is Plus Jakarta Sans (display + UI). IBM Plex Mono covers metadata /
+   telemetry strings. Source Serif 4 is used only on the page-two "human" surface.
+   Replace these @import lines with local @font-face rules if real files arrive. */
+@import url("https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=IBM+Plex+Mono:wght@400;500&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap");

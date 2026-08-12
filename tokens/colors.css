@@ -1,0 +1,60 @@
+:root{
+  /* ---- base: indigo (the one accent) ---- */
+  --indigo-50:#F5F3FE;--indigo-100:#E8E4FB;--indigo-200:#D2CBF6;--indigo-300:#B0A5EE;
+  --indigo-400:#8E80E4;--indigo-500:#6C5CD6;--indigo-600:#5A49C2;--indigo-700:#48399E;--indigo-800:#332872;
+
+  /* ---- base: ink / cool neutrals ---- */
+  --ink-900:#0C0A1E;--ink-800:#171331;--ink-700:#241F45;--ink-600:#3B3560;
+  --slate-500:#63607D;--slate-400:#6E6B85;--slate-300:#BFBDCE;--slate-200:#E2E0EB;
+  --slate-100:#F0EFF5;--slate-50:#F8F8FB;--white:#FFFFFF;
+
+  /* ---- base: semantic ---- */
+  --green-500:#1E8A5F;--green-100:#DDF0E7;
+  --amber-500:#A9761A;--amber-100:#F6EBD6;
+  --red-500:#B93A34;--red-100:#F7E2E0;
+
+  /* ---- base: warm (page two / "human" surface only) ---- */
+  --paper-100:#FCF8F2;--paper-200:#F4EDE2;--paper-300:#E5D9C8;
+  --clay-500:#B65535;--clay-700:#8A3D24;--sepia-900:#241C15;--sepia-600:#5B4C3E;
+
+  /* ---- semantic: text ---- */
+  --text-strong:var(--ink-900);
+  --text-body:var(--ink-600);
+  --text-muted:var(--slate-500);
+  --text-faint:var(--slate-400);
+  --text-accent:var(--indigo-600);
+  --text-on-accent:var(--white);
+  --text-on-dark:rgba(255,255,255,.92);
+  --text-on-dark-muted:rgba(255,255,255,.62);
+
+  /* ---- semantic: surfaces ---- */
+  --surface-page:var(--white);
+  --surface-canvas:var(--slate-50);
+  --surface-card:var(--white);
+  --surface-sunken:var(--slate-100);
+  --surface-inverse:var(--ink-900);
+  --surface-accent-soft:var(--indigo-50);
+  --surface-accent:var(--indigo-500);
+  --surface-scrim:rgba(12,10,30,.48);
+  --surface-glass:rgba(255,255,255,.78);
+
+  /* ---- semantic: lines ---- */
+  --line-hairline:var(--slate-200);
+  --line-strong:var(--slate-300);
+  --line-accent:var(--indigo-200);
+  --line-inverse:rgba(255,255,255,.14);
+
+  /* ---- semantic: interactive ---- */
+  --action-primary:var(--indigo-500);
+  --action-primary-hover:var(--indigo-600);
+  --action-primary-active:var(--indigo-700);
+  --action-focus-ring:rgba(108,92,214,.34);
+
+  /* ---- semantic: warm surface aliases ---- */
+  --warm-page:var(--paper-100);
+  --warm-card:var(--white);
+  --warm-text-strong:var(--sepia-900);
+  --warm-text-body:var(--sepia-600);
+  --warm-accent:var(--clay-500);
+  --warm-line:var(--paper-300);
+}
