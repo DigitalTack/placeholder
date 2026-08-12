@@ -18,6 +18,23 @@ Two screens, one route between them. Structure follows `uploads/placeholder-prd.
 | `ds-loader.js` | Resolves the component library — prefers the compiled `_ds_bundle.js`, otherwise transpiles `components/**` in-browser so the kit renders standalone |
 | `image-slot.js` | Drag-and-drop photo placeholder used by the team row |
 
+## Publishing (GitHub Pages)
+
+`npm run build` (→ `scripts/build-pages.mjs`) turns this folder into a self-contained static site in `_site/`: **page one at `/`, page two at `/truth.html`**. `_site/` is generated and git-ignored.
+
+The kit is authored to run straight from disk, which is not how it should be served, so the build:
+
+- flattens the kit next to the design-system files it needs (`styles.css`, `tokens/`, `components/components.css`, `assets/`, `_ds_bundle.js`) and rewrites the `../../` prefixes;
+- transpiles the `.jsx` files and the inline `type="text/babel"` blocks ahead of time, so no transpiler is shipped to the browser;
+- vendors React / ReactDOM / lucide from `node_modules` as **production** builds — the published page loads nothing from a CDN;
+- adds a favicon and `.nojekyll` (Jekyll would otherwise drop `_ds_bundle.js` for its leading underscore).
+
+`.github/workflows/pages.yml` builds and deploys on every push to `main` that touches the kit, the design system, or the build itself (plus `workflow_dispatch`). It needs **Settings → Pages → Source: GitHub Actions** set once on the repo.
+
+Preview the built site locally with `npm run serve` (<http://localhost:4173>).
+
+Note: the four team portraits on page two are still `<image-slot>` placeholders — the drag-and-drop editor ships with them, so swap in real `<img>` tags before showing the page to anyone outside the team.
+
 ## Demo behaviour
 
 First name + role (dropdown, no free-text role) → **Watch your double interview**. The interviewer types the one shared question (~42 chars/sec), 1.2s beat, 0.9s typing indicator, then the double's 80–100-word answer streams in (~190 chars/sec). Beneath it: `Confidence: 98% · Specificity: 3% · Humans involved: 0`. **Regenerate** cycles the three hand-written variants for that role — different words, identical nothing. Content matrix: **5 roles × 1 question × 3 variants = 15 pre-generated answers** (copy deck), no model calls.
