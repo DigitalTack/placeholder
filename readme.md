@@ -7,9 +7,9 @@ The design system exists to support a **two-page marketing site**:
 | Page | Job | Tone |
 |---|---|---|
 | **Page one** (`ui_kits/marketing/index.html`) | Sell the fake product completely straight-faced — indistinguishable from a well-funded Series A hiring-software site. The joke only works if nothing signals parody. | Confident, clean, slightly cold. "Nobody is home." |
-| **Page two** (`ui_kits/marketing/truth.html`) | Drop the act. Reveal that the product is fake and the problem is not. | Warm, plain, human. Serif, paper, real people. |
+| **Page two** (`ui_kits/marketing/truth.html`) | Drop the act. Reveal that the product is fake and the problem is not, and hand the reader a real company to talk to. | DigitalTack's own brand: cream canvas, ink, brand blue, Poppins + Funnel Sans. |
 
-The system therefore ships **two surfaces**: the cold indigo/ink *product* surface and the warm paper/clay *human* surface. They share tokens, spacing, radii and components; they do not share palette or type voice.
+The system therefore ships **two surfaces**, and they no longer come from the same place. Page one is the cold indigo/ink *product* surface documented here. Page two has been moved onto **DigitalTack's real 2026 design system** (vendored into `dt/`): cream `#FAFAF5`, ink `#14232D`, brand blue `#0096FF`, Poppins SemiBold + Funnel Sans + Roboto Mono. The warm paper/clay/serif surface this file used to describe is gone — the reveal now belongs to an actual company, which is the point of it. Everything below documents page one unless stated otherwise.
 
 ## Sources given
 

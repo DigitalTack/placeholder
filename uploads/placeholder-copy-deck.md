@@ -348,32 +348,32 @@ The problem is.
 
 ## The bridge
 
-We built a fake product about an AI that shows up so a person doesn't have to.
+We built a fake product about an AI that shows up so a person doesn't have to. It got uncomfortably easy to write.
 
-It got uncomfortably easy to write. Because for two years now, that's been the pitch for almost everything — AI that attends, AI that writes, AI that decides, AI standing exactly where a person used to be.
+You've probably met the real version. The proposal that reads like it was generated, because it was. The codebase a vendor delivered that nobody at the vendor can explain. The "team" on the other end of the contract that turns out to be one account manager and a model.
 
-Some of that is genuinely good. A lot of it is a placeholder.
+Some of that is genuinely good. A lot of it is a placeholder, standing exactly where an engineer should be.
 
 ---
 
-## What we actually think
+## What we actually do
 
-We use AI every day. It makes our engineers faster, and pretending otherwise would be its own kind of dishonesty.
+**Section headline**
+What we actually do
 
-What we don't do is put it where a person should be.
+We're Digital Tack. We build custom software, the data platforms behind it, and the cloud it runs on — small senior teams working directly with yours.
 
-The judgement about what to build. The conversation where someone tells you the requirement is wrong. The person who has to care whether this works on Monday. Those aren't tasks to be automated away — they're the actual job.
+We use AI every day. It makes our engineers faster, and pretending otherwise would be its own kind of dishonesty. What we don't do is put it where a person should be.
 
-When you work with us, there are people on the other end. They have names, they have opinions, and they'll tell you when they disagree with you.
+*(dimmed)* The judgement about what to build. The conversation where someone tells you the requirement is wrong. The person who has to care whether this works on Monday. Those aren't tasks to be automated away — they're the actual job.
+
+So when you work with us there are people on the other end. They have names, they have opinions, and they'll tell you when they disagree with you.
 
 ---
 
 ## Who we are
 
-**Section headline**
-The people who'd be working on this.
-
-*(Real photographs. Real names. Real roles. No stock imagery — if we can't photograph the team, we cut this section rather than fake it.)*
+**Cut for now.** The four-portrait section is not on the page: we have no real photographs of the team, and the PRD is explicit that we cut it rather than fake it. Restore it — real photographs, real names, real roles, no stock imagery — as soon as we can shoot the team. Until then the named host in the CTA carries the "real humans" beat.
 
 ---
 
@@ -383,20 +383,30 @@ The people who'd be working on this.
 Talk to a person.
 
 **Subhead**
-Not a form. Not a chatbot. Not a qualification funnel. Thirty minutes with {Name}, who will actually be on the call.
+Thirty minutes with David, who will actually be on the call. Bring the thing you're stuck on — a system that needs rebuilding, data you can't trust, a delivery that keeps slipping — and you'll leave with a straight opinion on it, whether or not you hire us.
 
 **Button**
-Book time with {Name}
+Book 30 minutes with David
+
+*(Links to `BOOKING_URL` in `Human.jsx` — currently mailto:david@digitaltack.com, to be swapped for the real scheduling link.)*
 
 **Microcopy**
-If we're not a fit, {Name} will tell you that in the first ten minutes.
+No form, no chatbot, no qualification funnel. And if we're not a fit, David will say so in the first ten minutes.
 
 ---
 
 ## Attribution
 
-Placeholder was made by **{Company}**.
-We build software with people in it.
+*(Digital Tack logo, above the text)*
+
+Placeholder was made by **Digital Tack**.
+We build software with people in it. Custom development, data and managed cloud, at [digitaltack.com](https://www.digitaltack.com).
+
+---
+
+## Footer line
+
+[The fake product](index.html) is still there if you want another look.
 
 ---
 

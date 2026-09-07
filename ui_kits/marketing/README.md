@@ -3,7 +3,9 @@
 Two screens, one route between them. Structure follows `uploads/placeholder-prd.md`; all copy is verbatim from `uploads/placeholder-copy-deck.md`.
 
 - `index.html` — **page one**, the straight-faced product site. Sticky nav → hero + product mockup → social proof bar → problem (3 col) → how it works (4 steps + fine print) → feature grid (6 tiles, plausible → alarming) → **interactive demo** → 3 testimonials → pricing (Basic / Pro / Executive) → FAQ (5) → full-width CTA → 4-column footer. Per PRD §5.11 the **only** link to page two is the final CTA band and the demo's own "Request a demo"; every other link is dead or anchor-scrolls. Full OG/Twitter card meta is set in the head.
-- `truth.html` — **page two**, the reveal (`noindex`). Looping AI-interviewer / AI-candidate conversation with the empty chair between them (plus the caption) → "Placeholder isn't real. The problem is." → the bridge → "What we actually think" → four team portraits (`<image-slot>`, drop real photos in) → "Talk to a person." CTA booking a named individual → attribution line.
+- `truth.html` — **page two**, the reveal (`noindex`). Looping AI-interviewer / AI-candidate conversation with the empty chair between them (plus the caption) → "Placeholder isn't real. The problem is." → the bridge, written at the reader's own experience of being sold AI → "What we actually do", which names Digital Tack and the work → a full-bleed ink "Talk to a person." band booking David → attribution with the Digital Tack lockup and a link to digitaltack.com.
+
+  **Page two runs on the DigitalTack design system, not the Placeholder one.** It links `dt/colors_and_type.css` (vendored from `digitaltack/design-system`, fonts alongside it in `dt/fonts/`) and loads no component bundle at all — its one button is a `dt-btn`, so `_ds_bundle.js` and `ds-loader.js` are not on the page. `human.css` reproduces the handful of `dt-*` type and control classes it needs and keeps `h-*` for page-two-only layout. Page one deliberately stays on the Placeholder system: the switch between the two surfaces is the reveal.
 
 ## Files
 
@@ -16,7 +18,7 @@ Two screens, one route between them. Structure follows `uploads/placeholder-prd.
 | `Human.jsx` | `Scene` (looping conversation), `HumanPage` |
 | `site.css` / `human.css` | Layout only; every value is a design-system token |
 | `ds-loader.js` | Resolves the component library — prefers the compiled `_ds_bundle.js`, otherwise transpiles `components/**` in-browser so the kit renders standalone |
-| `image-slot.js` | Drag-and-drop photo placeholder used by the team row |
+| `image-slot.js` | Drag-and-drop photo placeholder. Unused since the team row was cut — kept for when the portraits return |
 
 ## Publishing (GitHub Pages)
 
@@ -33,7 +35,7 @@ The kit is authored to run straight from disk, which is not how it should be ser
 
 Preview the built site locally with `npm run serve` (<http://localhost:4173>).
 
-Note: the four team portraits on page two are still `<image-slot>` placeholders — the drag-and-drop editor ships with them, so swap in real `<img>` tags before showing the page to anyone outside the team.
+Two things on page two are still pending: `BOOKING_URL` at the top of `Human.jsx` is a `mailto:` fallback until the real scheduling link exists, and the four-portrait team section is **cut** — the PRD requires real photographs and we have none, so it comes back (as `<img>` tags, or `image-slot.js` while shooting) rather than being faked.
 
 ## Demo behaviour
 

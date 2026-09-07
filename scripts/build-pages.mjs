@@ -28,12 +28,12 @@ const KIT = path.join(ROOT, 'ui_kits/marketing');
 const OUT = path.join(ROOT, '_site');
 
 /** Kit files copied verbatim (paths inside them are rewritten below). */
-const KIT_STATIC = ['site.css', 'human.css', 'ds-loader.js', 'image-slot.js'];
+const KIT_STATIC = ['site.css', 'human.css', 'ds-loader.js'];
 /** Kit modules transpiled to plain JS. */
 const KIT_JSX = ['Hero.jsx', 'Sections.jsx', 'Demo.jsx', 'Social.jsx', 'Human.jsx'];
 /** Design-system files the two pages load at runtime. */
 const DS_FILES = ['styles.css', '_ds_bundle.js', 'components/components.css'];
-const DS_DIRS = ['tokens', 'assets'];
+const DS_DIRS = ['tokens', 'assets', 'dt'];
 /** Third-party UMD builds, vendored so the page has no external script deps. */
 const VENDOR = [
   ['react/umd/react.production.min.js', 'react.min.js'],
@@ -96,9 +96,11 @@ async function buildPage(name) {
   html = await rewriteScripts(html, name);
   // The @dsCard annotation is design-system tooling metadata, not page content.
   html = html.replace(/^<!-- @dsCard[^\n]*\n/, '');
+  // Page one wears the fake product's mark; the reveal wears DigitalTack's.
+  const icon = name === 'truth.html' ? 'dt/assets/iso-blue.svg' : 'assets/logo-mark.png';
   html = html.replace(
     /(<meta name="viewport"[^>]*>\n)/,
-    '$1<link rel="icon" href="assets/logo-mark.png">\n',
+    `$1<link rel="icon" href="${icon}">\n`,
   );
   await writeFile(path.join(OUT, name), html);
 }

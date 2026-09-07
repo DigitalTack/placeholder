@@ -1,55 +1,108 @@
-/* Placeholder — page two ("the human page"). Warm surface; a deliberate break from the product site. */
-body.h-body{background:var(--warm-page);color:var(--warm-text-body)}
-.h-wrap{max-width:820px;margin:0 auto;padding:0 var(--gutter)}
-.h-wrap--wide{max-width:1060px}
-.h-top{padding:var(--space-8) 0 0}
-.h-top__row{display:flex;align-items:center;gap:var(--space-4);justify-content:space-between}
-.h-back{font-family:var(--font-display);font-size:var(--size-caption);color:var(--sepia-600)}
-.h-back:hover{color:var(--warm-accent)}
+/* Placeholder — page two ("the reveal"). Runs on the DigitalTack design system:
+   tokens and type come from ../../dt/colors_and_type.css. Page one stays on the
+   Placeholder system — the switch between the two surfaces IS the reveal.
 
-/* looping scene */
-.h-scene{margin:var(--space-12) 0 0;padding:var(--space-8) var(--space-5);border-radius:var(--radius-2xl);background:var(--warm-card);border:var(--border-hairline) solid var(--warm-line);box-shadow:var(--shadow-sm)}
-.h-scene__grid{display:grid;grid-template-columns:1fr 88px 1fr;gap:var(--space-3);align-items:start}
-@media(min-width:720px){.h-scene__grid{grid-template-columns:1fr 160px 1fr;gap:var(--space-6)}}
-.h-party{display:flex;flex-direction:column;gap:var(--space-3)}
-.h-party__label{font-family:var(--font-mono);font-size:var(--size-micro);letter-spacing:.08em;text-transform:uppercase;color:var(--sepia-600);opacity:.72}
-.h-bubble{font-size:var(--size-body-sm);line-height:var(--leading-normal);padding:var(--space-3) var(--space-4);border-radius:var(--radius-lg);background:var(--paper-200);color:var(--sepia-900);opacity:0;transform:translateY(6px);transition:opacity var(--dur-slow) var(--ease-out),transform var(--dur-slow) var(--ease-out)}
+   dt-* classes are the design system's own type and control definitions,
+   reproduced here so page two needs no component bundle. h-* is layout that
+   only exists on this page. */
+
+*{box-sizing:border-box}
+body{margin:0}
+
+/* ---------- design-system type and controls ---------- */
+.dt-eyebrow{font-family:var(--font-mono);font-size:var(--fs-caption);font-weight:400;letter-spacing:var(--tr-mono);text-transform:uppercase;color:var(--fg-2);margin:0;display:inline-block}
+.dt-eyebrow--on-dark{color:var(--dt-slate)}
+
+.dt-display{font-family:var(--font-display);font-weight:600;font-size:clamp(48px,7vw,96px);line-height:1.02;letter-spacing:-.02em;margin:0;text-wrap:balance;color:var(--fg-1)}
+.dt-display--blue{color:var(--dt-blue)}
+
+.dt-h2{font-family:var(--font-display);font-weight:600;font-size:clamp(32px,4vw,48px);line-height:1.1;letter-spacing:-.015em;margin:0;text-wrap:balance;color:var(--fg-1)}
+.dt-h2--on-dark{color:var(--dt-cream)}
+
+.dt-lead{font-family:var(--font-body);font-weight:300;font-size:var(--fs-body-lg);line-height:1.5;color:var(--fg-1);margin:0;text-wrap:pretty}
+.dt-lead--on-dark{color:var(--dt-slate)}
+
+.dt-arrow{display:inline-block;transition:transform var(--dur-2) var(--ease-out)}
+.dt-btn{display:inline-flex;align-items:center;gap:var(--sp-2);font-family:var(--font-body);font-weight:600;font-size:var(--fs-body);letter-spacing:var(--tr-body);border-radius:var(--radius-pill);border:1.5px solid transparent;padding:var(--sp-4) var(--sp-5);cursor:pointer;text-decoration:none;white-space:nowrap;transition:background var(--dur-2) var(--ease-out),box-shadow var(--dur-2) var(--ease-out),transform var(--dur-1) var(--ease-out)}
+.dt-btn:hover .dt-arrow{transform:translateX(3px)}
+/* blue-700, not brand blue: white on --dt-blue is 3.09:1 and fails WCAG AA at
+   this text size. --dt-blue-700 gives 4.61:1. Brand blue stays on the display
+   headline, where the large-text 3:1 threshold applies. */
+.dt-btn--primary{background:var(--dt-blue-700)}
+/* The label colour must be restated for every state. This button is an <a>, and
+   `a:hover{color:var(--dt-blue-700)}` in the design system's base sheet has
+   specificity (0,1,1) — it outranks a lone class, so a single
+   `.dt-btn--primary{color:...}` loses on hover and the label turns blue-700 on a
+   blue-700 fill, i.e. invisible. (The same trap is live in the design system's
+   own ui_kits/website/site.css.) */
+.dt-btn--primary,
+.dt-btn--primary:hover,
+.dt-btn--primary:focus,
+.dt-btn--primary:active{color:var(--dt-white)}
+/* Hover keeps the fill put — brightening it to --dt-blue would drop the white
+   label to 3.09:1 — so the state is carried by the sanctioned brand glow, a 1px
+   lift and the arrow slide. The label holds 4.61:1 throughout. */
+.dt-btn--primary:hover{box-shadow:var(--shadow-brand);transform:translateY(-1px)}
+/* press drops back; declared after :hover so it wins while the pointer is down */
+.dt-btn:active{transform:scale(.98)}
+.dt-btn:focus-visible{outline:2px solid var(--dt-cream);outline-offset:2px}
+
+/* ---------- page shell ---------- */
+body.h-body{background:var(--bg-canvas);color:var(--fg-1);font-family:var(--font-body)}
+.h-wrap{max-width:1180px;margin:0 auto;padding:0 var(--sp-6)}
+.h-top{padding-top:var(--sp-8)}
+
+/* ---------- looping scene ---------- */
+.h-scene-wrap{margin:var(--sp-7) 0 0}
+.h-scene{padding:var(--sp-7) var(--sp-5);border-radius:var(--radius-xl);background:var(--bg-surface);border:1px solid var(--border-subtle);box-shadow:var(--shadow-1)}
+.h-scene__grid{display:grid;grid-template-columns:1fr 88px 1fr;gap:var(--sp-3);align-items:start}
+@media(min-width:720px){.h-scene__grid{grid-template-columns:1fr 160px 1fr;gap:var(--sp-6)}}
+@media(max-width:560px){.h-scene{padding:var(--sp-5) var(--sp-4)}.h-scene__grid{grid-template-columns:1fr 56px 1fr;gap:var(--sp-2)}.h-bubble{font-size:var(--fs-caption);padding:var(--sp-2) var(--sp-3)}}
+.h-party{display:flex;flex-direction:column;gap:var(--sp-3)}
+.h-bubble{font-size:var(--fs-body-sm);line-height:var(--lh-base);padding:var(--sp-3) var(--sp-4);border-radius:var(--radius-md);background:var(--dt-slate-100);color:var(--fg-1);opacity:0;transform:translateY(6px);transition:opacity var(--dur-3) var(--ease-out),transform var(--dur-3) var(--ease-out)}
 .h-bubble[data-on=true]{opacity:1;transform:none}
 .h-party--right{text-align:right}
-.h-party--right .h-bubble{background:var(--paper-300)}
-.h-seat{display:flex;flex-direction:column;align-items:center;gap:var(--space-3);padding-top:var(--space-6)}
-.h-seat__box{width:100%;aspect-ratio:3/4;border-radius:var(--radius-lg);border:var(--border-strong) dashed var(--paper-300)}
-.h-seat__cap{font-family:var(--font-mono);font-size:var(--size-micro);text-align:center;color:var(--sepia-600);opacity:.6;line-height:1.4}
+.h-party--right .h-bubble{background:var(--bg-mint)}
+.h-seat{display:flex;flex-direction:column;align-items:center;gap:var(--sp-3);padding-top:var(--sp-6)}
+.h-seat__box{width:100%;aspect-ratio:3/4;border-radius:var(--radius-lg);border:2px dashed var(--dt-slate)}
+.h-seat__cap{font-family:var(--font-mono);font-size:var(--fs-caption);letter-spacing:var(--tr-mono);text-transform:uppercase;text-align:center;color:var(--fg-2);line-height:1.5}
+.h-scene__cap{margin-top:var(--sp-4);text-align:center;font-family:var(--font-mono);font-size:var(--fs-caption);letter-spacing:var(--tr-mono);text-transform:uppercase;color:var(--fg-2)}
 
-/* big line */
-.h-big{padding:var(--section-y) 0 0}
-.h-big h1{font-family:var(--font-humane);font-weight:400;font-size:clamp(2.4rem,8.4vw,5.4rem);line-height:1.02;letter-spacing:-.02em;color:var(--sepia-900);text-wrap:balance}
-.h-prose{padding:var(--space-10) 0 0;display:flex;flex-direction:column;gap:var(--space-6)}
-.h-prose p{font-family:var(--font-humane);font-size:clamp(1.0625rem,2.1vw,1.3125rem);line-height:var(--leading-relaxed);color:var(--sepia-900);max-width:58ch}
-.h-prose p.h-dim{color:var(--sepia-600)}
-.h-rule{height:1px;background:var(--warm-line);margin:var(--section-y) 0}
+/* the DigitalTack motion tokens don't self-zero, so opt out explicitly */
+@media(prefers-reduced-motion:reduce){
+  .h-bubble{transition:none}
+  .dt-arrow,.dt-btn{transition:none}
+  .dt-btn--primary:hover{transform:none}
+}
 
-/* team */
-.h-team{display:grid;gap:var(--space-8);grid-template-columns:repeat(2,1fr)}
-@media(min-width:760px){.h-team{grid-template-columns:repeat(4,1fr)}}
-.h-person figure{margin:0}
-.h-person image-slot{width:100%;aspect-ratio:4/5}
-.h-person__name{font-family:var(--font-display);font-weight:var(--weight-semibold);font-size:var(--size-body-sm);color:var(--sepia-900);margin-top:var(--space-3)}
-.h-person__role{font-size:var(--size-caption);color:var(--sepia-600)}
+/* ---------- the turn ---------- */
+.h-big .dt-display{font-size:clamp(40px,6.6vw,84px)}
+.h-big .dt-display--blue{color:var(--dt-blue-700)}
+.h-big{padding-top:var(--sp-9);display:flex;flex-direction:column;gap:var(--sp-4);align-items:flex-start}
 
-/* cta */
-.h-cta{background:var(--warm-card);border:var(--border-hairline) solid var(--warm-line);border-radius:var(--radius-2xl);padding:var(--space-10) var(--space-8);text-align:center;box-shadow:var(--shadow-sm)}
-.h-cta h2{font-family:var(--font-humane);font-weight:400;font-size:clamp(1.6rem,4vw,2.4rem);color:var(--sepia-900);letter-spacing:-.01em}
-.h-cta p{margin:var(--space-4) auto 0;max-width:44ch;color:var(--sepia-600)}
-.h-cta__row{display:flex;justify-content:center;margin-top:var(--space-8)}
-.h-foot{padding:var(--section-y) 0 var(--space-12);text-align:center;font-size:var(--size-caption);color:var(--sepia-600)}
+/* ---------- prose sections ---------- */
+.h-prose{padding-top:var(--sp-7);display:flex;flex-direction:column;gap:var(--sp-5)}
+.h-prose p{font-size:var(--fs-body-lg);line-height:var(--lh-base);color:var(--fg-1);max-width:62ch;margin:0;text-wrap:pretty}
+.h-prose p.h-dim{color:var(--fg-2)}
+.h-section__head{padding-top:var(--sp-8);display:flex;flex-direction:column;gap:var(--sp-3)}
+.h-rule{height:1px;background:var(--border-subtle);margin:var(--sp-9) 0 0}
 
-/* reveal-page additions */
-.h-scene-wrap{margin:var(--space-12) 0 0}
-.h-scene{margin:0}
-.h-scene__cap{margin-top:var(--space-4);text-align:center;font-family:var(--font-mono);font-size:var(--size-caption);color:var(--sepia-600);opacity:.8}
-.h-h2{font-family:var(--font-humane);font-weight:400;font-size:clamp(1.5rem,3.4vw,2.1rem);letter-spacing:-.01em;color:var(--sepia-900);margin:0}
-.h-cta__micro{margin-top:var(--space-5);font-size:var(--size-caption);color:var(--sepia-600)}
-.h-attrib-block{margin-top:var(--section-y);text-align:center;display:flex;flex-direction:column;gap:var(--space-2)}
-.h-attrib-block p{font-family:var(--font-humane);font-size:var(--size-body-lg);color:var(--sepia-900)}
+/* ---------- CTA: full-bleed ink band ---------- */
+.h-cta{position:relative;overflow:hidden;background:var(--dt-ink);color:var(--dt-cream);padding:var(--sp-9) 0;margin-top:var(--sp-9)}
+.h-cta::before{content:"";position:absolute;right:-100px;top:-80px;width:480px;height:480px;background:url(../../dt/assets/iso-blue.svg) no-repeat center/contain;opacity:.08}
+.h-cta__inner{position:relative;max-width:1180px;margin:0 auto;padding:0 var(--sp-6);display:flex;flex-direction:column;align-items:flex-start;gap:var(--sp-5)}
+.h-cta__row{margin-top:var(--sp-3)}
+.h-cta__micro{font-size:var(--fs-body-sm);color:var(--dt-slate);margin:0;max-width:56ch}
+
+/* ---------- attribution + footer ---------- */
+.h-attrib-block{margin-top:var(--sp-9);display:flex;flex-direction:column;align-items:center;gap:var(--sp-2);text-align:center}
+.h-attrib-logo{height:28px;width:auto;margin-bottom:var(--sp-3)}
+.h-attrib-block p{margin:0;font-size:var(--fs-body-lg);color:var(--fg-1)}
 .h-attrib-block strong{font-weight:600}
+.h-attrib-block p.h-dim{color:var(--fg-2);max-width:56ch}
+.h-foot{padding:var(--sp-8) 0 var(--sp-7);text-align:center;font-size:var(--fs-body-sm);color:var(--fg-2)}
+
+/* --dt-blue on cream is 3.0:1; --dt-blue-700 with an underline clears AA */
+.h-attrib-block a,.h-foot a,
+.h-attrib-block a:hover,.h-foot a:hover{color:var(--fg-1);text-decoration:underline;text-decoration-color:var(--dt-blue);text-decoration-thickness:2px;text-underline-offset:2px}
+.h-attrib-block a:hover,.h-foot a:hover{text-decoration-color:var(--dt-ink)}
