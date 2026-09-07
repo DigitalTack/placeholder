@@ -31,6 +31,8 @@ The kit is authored to run straight from disk, which is not how it should be ser
 - vendors React / ReactDOM / lucide from `node_modules` as **production** builds — the published page loads nothing from a CDN;
 - adds a favicon and `.nojekyll` (Jekyll would otherwise drop `_ds_bundle.js` for its leading underscore).
 
+The two pages get different tab icons, injected by the build: page one keeps the fake product's `assets/logo-mark.png`, and page two gets DigitalTack's real favicon — `dt/assets/favicon.svg` with `favicon-32.png` as the raster fallback, both taken from <https://new.digitaltack.dev> (the blue isotype on a rounded ink plate; the bare `iso-blue.svg` used for the CTA watermark has no plate and reads poorly at tab size).
+
 `.github/workflows/pages.yml` builds and deploys on every push to `main` that touches the kit, the design system, or the build itself (plus `workflow_dispatch`). It needs **Settings → Pages → Source: GitHub Actions** set once on the repo.
 
 Preview the built site locally with `npm run serve` (<http://localhost:4173>).

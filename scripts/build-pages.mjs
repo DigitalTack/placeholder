@@ -96,12 +96,13 @@ async function buildPage(name) {
   html = await rewriteScripts(html, name);
   // The @dsCard annotation is design-system tooling metadata, not page content.
   html = html.replace(/^<!-- @dsCard[^\n]*\n/, '');
-  // Page one wears the fake product's mark; the reveal wears DigitalTack's.
-  const icon = name === 'truth.html' ? 'dt/assets/iso-blue.svg' : 'assets/logo-mark.png';
-  html = html.replace(
-    /(<meta name="viewport"[^>]*>\n)/,
-    `$1<link rel="icon" href="${icon}">\n`,
-  );
+  // Page one wears the fake product's mark; the reveal wears DigitalTack's own
+  // favicon — the blue isotype on an ink plate, as served by new.digitaltack.dev.
+  const icons = name === 'truth.html'
+    ? '<link rel="icon" href="dt/assets/favicon.svg" type="image/svg+xml">\n'
+      + '<link rel="icon" href="dt/assets/favicon-32.png" sizes="32x32" type="image/png">\n'
+    : '<link rel="icon" href="assets/logo-mark.png">\n';
+  html = html.replace(/(<meta name="viewport"[^>]*>\n)/, `$1${icons}`);
   await writeFile(path.join(OUT, name), html);
 }
 
