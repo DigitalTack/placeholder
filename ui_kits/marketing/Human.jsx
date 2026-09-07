@@ -8,10 +8,12 @@ const BOOKING_URL = 'mailto:david@digitaltack.com?subject=Placeholder';
    build automatically) and set each `img`; entries left without one render a
    neutral "photo to come" frame. */
 const TEAM = [
-  { n: 'David Hernández', r: '[Role]', img: null },
-  { n: '[Name]', r: '[Role]', img: null },
-  { n: '[Name]', r: '[Role]', img: null },
-  { n: '[Name]', r: '[Role]', img: null }
+  { n: 'David Hernández', r: 'CEO', img: null },
+  { n: 'Tony Morellá', r: 'CTO', img: null },
+  { n: 'Juanchu Fernández', r: 'Frontend Lead', img: null },
+  { n: 'Gonzalo Trenco', r: 'CFO', img: null },
+  { n: 'Diana Loja', r: 'CFO', img: null },
+  { n: 'Doménica Jiménez', r: 'Full Stack Developer', img: null }
 ];
 
 const SCENE = [
