@@ -87,6 +87,18 @@ body.h-body{background:var(--bg-canvas);color:var(--fg-1);font-family:var(--font
 .h-section__head{padding-top:var(--sp-8);display:flex;flex-direction:column;gap:var(--sp-3)}
 .h-rule{height:1px;background:var(--border-subtle);margin:var(--sp-9) 0 0}
 
+/* ---------- team ---------- */
+.h-team{padding-top:var(--sp-7);display:grid;gap:var(--sp-6);grid-template-columns:repeat(2,1fr)}
+@media(min-width:760px){.h-team{grid-template-columns:repeat(4,1fr)}}
+.h-person{margin:0}
+.h-person__photo{display:block;width:100%;aspect-ratio:4/5;border-radius:var(--radius-lg);object-fit:cover;background:var(--dt-slate-100)}
+/* solid, never dashed: in this system a dashed frame means "synthetic", which is
+   the opposite of what this section is for */
+.h-person__photo--empty{display:flex;align-items:center;justify-content:center;border:1px solid var(--border-subtle)}
+.h-person__photo--empty span{font-family:var(--font-mono);font-size:var(--fs-caption);letter-spacing:var(--tr-mono);text-transform:uppercase;color:var(--fg-2)}
+.h-person__name{font-weight:600;font-size:var(--fs-body);color:var(--fg-1);margin-top:var(--sp-3)}
+.h-person__role{font-size:var(--fs-body-sm);color:var(--fg-2)}
+
 /* ---------- CTA: full-bleed ink band ---------- */
 .h-cta{position:relative;overflow:hidden;background:var(--dt-ink);color:var(--dt-cream);padding:var(--sp-9) 0;margin-top:var(--sp-9)}
 .h-cta::before{content:"";position:absolute;right:-100px;top:-80px;width:480px;height:480px;background:url(../../dt/assets/iso-blue.svg) no-repeat center/contain;opacity:.08}

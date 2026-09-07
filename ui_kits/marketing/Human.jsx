@@ -1,6 +1,19 @@
 /* TODO: replace with the real Calendly / Cal.com link. Falls back to email until then. */
 const BOOKING_URL = 'mailto:david@digitaltack.com?subject=Placeholder';
 
+/* TODO — real names, roles and photographs before this page goes anywhere public.
+   The PRD is explicit: this section ships real people or not at all, because
+   after a full page of fabricated testimonials the actual humans ARE the
+   punchline. Drop the files into assets/team/ (that directory ships with the
+   build automatically) and set each `img`; entries left without one render a
+   neutral "photo to come" frame. */
+const TEAM = [
+  { n: 'David Hernández', r: '[Role]', img: null },
+  { n: '[Name]', r: '[Role]', img: null },
+  { n: '[Name]', r: '[Role]', img: null },
+  { n: '[Name]', r: '[Role]', img: null }
+];
+
 const SCENE = [
   { side: 'l', t: 'Tell me about a time you handled conflict on a team.' },
   { side: 'r', t: 'Great question. Most conflict is really a communication gap wearing a costume.' },
@@ -78,9 +91,30 @@ function HumanPage() {
         </div>
       </div>
 
+      <div className="h-wrap h-section">
+        <div className="h-rule"></div>
+        <div className="h-section__head">
+          <span className="dt-eyebrow">03 / The team</span>
+          <h2 className="dt-h2">The people who&rsquo;d be working on this.</h2>
+        </div>
+        <div className="h-team">
+          {TEAM.map((p, i) => (
+            <figure className="h-person" key={i}>
+              {p.img
+                ? <img className="h-person__photo" src={p.img} alt={p.n} />
+                : <div className="h-person__photo h-person__photo--empty"><span>photo to come</span></div>}
+              <figcaption>
+                <div className="h-person__name">{p.n}</div>
+                <div className="h-person__role">{p.r}</div>
+              </figcaption>
+            </figure>
+          ))}
+        </div>
+      </div>
+
       <section className="h-cta">
         <div className="h-cta__inner">
-          <span className="dt-eyebrow dt-eyebrow--on-dark">03 / Talk to us</span>
+          <span className="dt-eyebrow dt-eyebrow--on-dark">04 / Talk to us</span>
           <h2 className="dt-h2 dt-h2--on-dark">Talk to a person.</h2>
           <p className="dt-lead dt-lead--on-dark">Thirty minutes with {host.name}, who will actually be on the call. Bring the thing you&rsquo;re stuck on &mdash; a system that needs rebuilding, data you can&rsquo;t trust, a delivery that keeps slipping &mdash; and you&rsquo;ll leave with a straight opinion on it, whether or not you hire us.</p>
           <div className="h-cta__row">

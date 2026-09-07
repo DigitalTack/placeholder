@@ -373,7 +373,12 @@ So when you work with us there are people on the other end. They have names, the
 
 ## Who we are
 
-**Cut for now.** The four-portrait section is not on the page: we have no real photographs of the team, and the PRD is explicit that we cut it rather than fake it. Restore it — real photographs, real names, real roles, no stock imagery — as soon as we can shoot the team. Until then the named host in the CTA carries the "real humans" beat.
+**Section headline**
+The people who'd be working on this.
+
+Four portraits at 4:5, name and role beneath. The data lives in the `TEAM` array at the top of `Human.jsx`.
+
+*(Real photographs. Real names. Real roles. No stock imagery — the PRD is explicit that we cut this section rather than fake it. Entries with no photo yet render a neutral "photo to come" frame, which is fine internally and **must not ship**: after a full page of fabricated testimonials, the actual humans are the punchline. Photos go in `assets/team/`, which the build copies automatically.)*
 
 ---
 
