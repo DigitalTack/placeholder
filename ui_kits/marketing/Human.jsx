@@ -1,4 +1,3 @@
-/* TODO: replace with the real Calendly / Cal.com link. Falls back to email until then. */
 const BOOKING_URL = 'https://drvi.at/book-call';
 
 /* TODO — real names, roles and photographs before this page goes anywhere public.
