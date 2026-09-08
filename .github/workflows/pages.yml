@@ -8,6 +8,7 @@ on:
       - 'components/**'
       - 'tokens/**'
       - 'assets/**'
+      - 'dt/**'
       - 'styles.css'
       - '_ds_bundle.js'
       - 'scripts/build-pages.mjs'
